@@ -14,10 +14,10 @@ Please see the following example:
 version: 4.1.3.0
 target:
   deployStatusSlackHookUrl: https://hooks.slack.com/services/MY/HOOK/FROMSLACK
-  deployStatusReplaceMap: CRAFTER_DATA_ROOT/data/repos/sites/hello/sandbox/data/repos/sites/hello/sandbox=
+  deployStatusReplaceMap: CRAFTER_DATA_ROOT/data/repos/sites/somesite/sandbox=
   env: live
   siteName: somesite
-  localRepoPath: CRAFTER_DATA_ROOT/data/repos/sites/hello/sandbox
+  localRepoPath: CRAFTER_DATA_ROOT/data/repos/sites/somesite/sandbox
   search:
     indexIdFormat: '%s-live'
   deployment:
@@ -26,7 +26,7 @@ target:
     pipeline:
     - processorName: gitDiffProcessor
     - processorName: scriptProcessor
-      scriptPath: 'SCRIPT_ROOT/deployment-status-processor.groovy'
+      scriptPath: 'SCRIPT_ROOT/deployment-status-to-slack-processor.groovy'
     - processorName: searchIndexingProcessor
       excludeFiles:
       - ^/sources/.*$
@@ -39,7 +39,7 @@ target:
       method: GET
       url: ${target.engineUrl}/api/1/site/context/graphql/rebuild.json?crafterSite=${target.siteName}&token=${target.engineManagementToken}
     - processorName: scriptProcessor
-      scriptPath: 'SCRIPT_ROOT/deployment-status-processor.groovy'
+      scriptPath: 'SCRIPT_ROOT/deployment-status-to-slack-processor.groovy'
     - processorName: fileOutputProcessor
       processorLabel: fileOutputProcessor
 ```
