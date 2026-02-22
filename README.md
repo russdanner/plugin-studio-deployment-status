@@ -7,8 +7,9 @@ Capabilities include:
   
 # Installation
 Initial instructions (TODO: improve)
-1. place processor in a location that can be reached by the deployer
-2. Configure YAML for target:
+1. Ensure deployer Groovy Sandbox is configured to allow execution to the script
+1. Place processor in a location that can be reached by the deployer
+2. Configure YAML for each target you wish to publish a status for:
 Please see the following example:
 ```
 version: 4.1.3.0
@@ -43,9 +44,12 @@ target:
     - processorName: fileOutputProcessor
       processorLabel: fileOutputProcessor
 ```
-## Notworthy configuation:
+## Noteworthy Configuation
+### Placeholders in configuration
+- `CRAFTER_DATA_ROOT`: This is a placehodler for the real fully qualified path to the root of your data folder
+- `SCRIPT_ROOT`: This is a placeholder for the real fully qualified path to your deployment scripts folder
 ### Parameters:
 - `deployStatusSlackHookUrl`: this is a hook url you get from Slack for a specific channel
 - `deployStatusReplaceMap`: This is a comma serpated key=value map of replacements/redaction of values you dont want to push to slack (like root folder paths etc)
- ### Structure:
- Note that the processor appears twice in the processor chain (right after the diff, and right before the fileOutput processors.) This is important. The first invocation begins trapping deployment errors and the second invocation stops trapping them and sends the report to slack.
+### Structure:
+Note that the processor appears twice in the processor chain (right after the diff, and right before the fileOutput processors.) This is important. The first invocation begins trapping deployment errors and the second invocation stops trapping them and sends the report to slack.
