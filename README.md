@@ -2,9 +2,15 @@
 
 This plugin contains CrafterCMS extensions that improve the visibility and reporting of deployment status
 
-Capabilities include:
-- Deployment Processor that pushes deployment status updates to Slack (per target)
-  
+## Capabilities include:
+### Deployment Processor that pushes deployment status updates to Slack (per target)
+#### Example Successful Publish Notification
+<img width="716" height="108" alt="image" src="https://github.com/user-attachments/assets/26fc23e9-5ab1-4c50-a026-c87ef16c1034" />
+
+#### Example of Publish Notification When Deployment is Completed With Errors
+<img width="695" height="415" alt="image" src="https://github.com/user-attachments/assets/6c5356f8-41ff-46ae-aafc-46e660fcd61b" />
+
+
 # Installation
 Initial instructions (TODO: improve)
 1. place processor in a location that can be reached by the deployer
